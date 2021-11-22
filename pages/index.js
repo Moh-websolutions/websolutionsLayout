@@ -30,7 +30,7 @@ const posts = [
       },
       {
         id: 5,
-        name: 'Green Beanie',
+        name: 'Green Beanie ss',
         imageUrl: '/about-bg.jpeg',
         desc: 'Many say exploration is part of our destiny, but it’s actually our duty to future generations.'
       }
