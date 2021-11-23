@@ -48,7 +48,7 @@ export default function Home({posts}) {
                     {posts.slice(0,5).map((post, idx) => (
                       <div key={post.id}>
                         <div className="post-preview">
-                            <a href="#">
+                        <a href={`/blog/${post.id}`}>
                                 <h2 className="post-title">{post.title}</h2>
                                 <h3 className="post-subtitle">{post.body}</h3>
                             </a>

@@ -3,7 +3,7 @@ import Layout from '@/components/Layout'
 import Header from '@/components/Header'
 
 
-export default function Home({posts}) {
+export default function Home({articles}) {
   return (
     <Layout title="Blog" description="content">
       <Header hero_title="Blog" hero_subtitle="Latest news / articles" hero_bg="/home-bg.jpeg" />
@@ -12,39 +12,38 @@ export default function Home({posts}) {
             <div className="row gx-4 gx-lg-5 justify-content-center">
                 <div className="col-md-10 col-lg-8 col-xl-7">
 
-                    {posts.slice(0,5).map((post, idx) => (
-                      <div key={post.id}>
-                        <div className="post-preview">
-                            <a href={`/blog/${post.id}`}>
-                                <h2 className="post-title">{post.title}</h2>
-                                <h3 className="post-subtitle">{post.body}</h3>
+                    {articles.slice(0,5).map((article, idx) => (
+                      <div key={article.id}>
+                        <div className="article-preview">
+                            <a href={`/blog/${article.id}`}>
+                                <h2 className="article-title">{article.title}</h2>
+                                <h3 className="article-subtitle">{article.description}</h3>
                             </a>
-                            <p className="post-meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on September 24, 2021
-                            </p>
+                            <p className="article-meta">
+                                articleed by &nbsp;
+                                {article.author.name }
+                                 on {article.created_at}
+                             </p>
+                          
+                          {article.author.picture && (
+                            <Image
+                              image={article.author.picture}
+                              style={{
+                                position: "static",
+                                borderRadius: "50%",
+                                height: 30,
+                              }}
+                            />
+                          )}
                         </div>
                         <hr className="my-4" />
                       </div>
 
                     ))}
 
-            <button
-            onClick={() => Router.push(`/?page=${this.props.page - 1}`)}
-            disabled={this.props.page <= 1}
-            >
-            PREV
-            </button>
-            <button onClick={() => Router.push(`/?page=${this.props.page + 1}`)}>
-            NEXT
-            </button>
-            <Link href="/?page=1">
-            <a>First page</a>
-            </Link>
-            
+           
                     <div className="d-flex justify-content-end mb-4">
-                        <a className="btn btn-primary text-uppercase" href="#!" id="button_next_posts" >Older Posts →</a></div>
+                        <a className="btn btn-primary text-uppercase" href="#!" id="button_next_articles" >Older articles →</a></div>
                 </div>
             </div>
         </div>
@@ -54,12 +53,12 @@ export default function Home({posts}) {
  
  
 export async function getStaticProps() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-  const posts = await res.json()
+  const res = await fetch('https://moh-websolutions-strapi.herokuapp.com/articles')
+  const articles = await res.json()
 
   return {
     props: {
-      posts,
+      articles,
     },
     
     revalidate: 10, // In seconds
@@ -67,5 +66,5 @@ export async function getStaticProps() {
 }
 
 
-//on click button_next_posts display next 5 posts
+//on click button_next_articles display next 5 articles
  

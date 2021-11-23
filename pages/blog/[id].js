@@ -1,14 +1,8 @@
 
 import Image from 'next/image'
-<<<<<<< HEAD
-import Layout from '../../components/Layout'
-import Header from '../../components/Header'
-export default function POST ({post, user}) {
-=======
 import Layout from '@/components/Layout'
 import Header from '@/components/Header'
 export default function POST ({post}) {
->>>>>>> 831b36f7afc62accddda4b88d440b8f1a689bb37
     return(
        
         <>
