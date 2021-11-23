@@ -1,7 +1,7 @@
 
 import Image from 'next/image'
-import Layout from '../../components/Layout'
-import Header from '../../components/Header'
+import Layout from '@/components/Layout'
+import Header from '@/components/Header'
 export default function POST ({post}) {
     return(
        

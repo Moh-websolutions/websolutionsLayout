@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import Layout from '../../components/Layout'
-import Header from '../../components/Header'
+import Layout from '@/components/Layout'
+import Header from '@/components/Header'
 
 
 export default function Home({posts}) {
   return (
-    <Layout title="Home page" description="content">
-      <Header hero_title="Home page" hero_subtitle="content for subtitle" hero_bg="/home-bg.jpeg" />
+    <Layout title="Blog" description="content">
+      <Header hero_title="Blog" hero_subtitle="Latest news / articles" hero_bg="/home-bg.jpeg" />
 
       <div className="container px-4 px-lg-5">
             <div className="row gx-4 gx-lg-5 justify-content-center">
@@ -15,7 +15,7 @@ export default function Home({posts}) {
                     {posts.slice(0,5).map((post, idx) => (
                       <div key={post.id}>
                         <div className="post-preview">
-                            <a href="#">
+                            <a href={`/blog/${post.id}`}>
                                 <h2 className="post-title">{post.title}</h2>
                                 <h3 className="post-subtitle">{post.body}</h3>
                             </a>
