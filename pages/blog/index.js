@@ -1,7 +1,6 @@
-import Image from 'next/image'
-import Layout from '@/components/Layout'
+import Image from 'next/image';
+import Layout from '@/components/Layout';
 import Header from '@/components/Header'
-
 
 export default function Home({articles}) {
   return (
@@ -25,16 +24,11 @@ export default function Home({articles}) {
                                  on {article.created_at}
                              </p>
                           
-                          {article.author.picture && (
-                            <Image
-                              image={article.author.picture}
-                              style={{
-                                position: "static",
-                                borderRadius: "50%",
-                                height: 30,
-                              }}
-                            />
-                          )}
+                             <div>
+
+                             <Image width={50} height={50} className="h-10 w-10 rounded-full" src={article.author.picture[0]} alt={article.title} />
+          
+                            </div>
                         </div>
                         <hr className="my-4" />
                       </div>
