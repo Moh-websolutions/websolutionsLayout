@@ -1,5 +1,5 @@
 import Layout from '../components/Layout'
-import Header from '../components/Header'
+import Header from '@/components/Header'
 
 export default function About (){
 	return (
