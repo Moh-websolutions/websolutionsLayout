@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Nav from '/components/Nav'
 import Footer from '/components/Footer' 
-import Header from '/components/Header' 
-
-
+import { useRouter } from 'next/router'
 
 export default function Layout({title, keywords, description, children}) {
+  const router = useRouter();
+
   return (
 
     <div>
@@ -26,8 +26,10 @@ export default function Layout({title, keywords, description, children}) {
         </Head>
 
         <Nav />
+        {/* //use of router */}
+         {router.pathname === '/' ? <div className="container-fluid">{children}</div> : <div className="container">{children}</div>}
 
-        {children}
+       
 
         <Footer />
 
