@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Layout from '../../components/Layout'
 import Header from '../../components/Header'
-export default function POST ({post}) {
+export default function POST ({post, user}) {
     return(
        
         <>
@@ -48,3 +48,5 @@ export async function getStaticProps({params}) {
         props: {post}
     }
 }
+
+ 

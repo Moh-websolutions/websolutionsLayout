@@ -29,8 +29,22 @@ export default function Home({posts}) {
                       </div>
 
                     ))}
+
+            <button
+            onClick={() => Router.push(`/?page=${this.props.page - 1}`)}
+            disabled={this.props.page <= 1}
+            >
+            PREV
+            </button>
+            <button onClick={() => Router.push(`/?page=${this.props.page + 1}`)}>
+            NEXT
+            </button>
+            <Link href="/?page=1">
+            <a>First page</a>
+            </Link>
             
-                    <div className="d-flex justify-content-end mb-4"><a className="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                    <div className="d-flex justify-content-end mb-4">
+                        <a className="btn btn-primary text-uppercase" href="#!" id="button_next_posts" >Older Posts →</a></div>
                 </div>
             </div>
         </div>
@@ -51,3 +65,7 @@ export async function getStaticProps() {
     revalidate: 10, // In seconds
   }
 }
+
+
+//on click button_next_posts display next 5 posts
+ 
