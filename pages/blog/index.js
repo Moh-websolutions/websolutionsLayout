@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import Layout from '@/components/Layout';
-import Header from '@/components/Header'
+import Header from '@/components/Header' 
+import { API_URL } from 'url.config';
+ 
 
 export default function Home({articles}) {
+
+
+
   return (
     <Layout title="Blog" description="content">
       <Header hero_title="Blog" hero_subtitle="Latest news / articles" hero_bg="/home-bg.jpeg" />
@@ -22,12 +27,17 @@ export default function Home({articles}) {
                                 articleed by &nbsp;
                                 {article.author.name }
                                  on {article.created_at}
+
+                                 {/* {console.log(article.author.picture)} */}
                              </p>
                           
                              <div>
-
-                             <Image width={50} height={50} className="h-10 w-10 rounded-full" src={article.author.picture[0]} alt={article.title} />
-          
+                            
+                             <Image 
+                                unoptimized={process.env.ENVIRONMENT !== "PRODUCTION"}
+                                src={`${API_URL}${article.author.picture.formats.small.url}`} 
+                                width={50}height={50} layout="fixed" 
+                              />
                             </div>
                         </div>
                         <hr className="my-4" />
@@ -47,7 +57,7 @@ export default function Home({articles}) {
  
  
 export async function getStaticProps() {
-  const res = await fetch('https://moh-websolutions-strapi.herokuapp.com/articles')
+  const res = await fetch(`${API_URL}/articles`)
   const articles = await res.json()
 
   return {
